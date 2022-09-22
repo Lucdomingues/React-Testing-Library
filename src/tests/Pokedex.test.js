@@ -1,19 +1,12 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-import pokemons from '../data';
-import { isPokemonFavoriteByIdType } from '../types';
-import Pokedex from '../pages/Pokedex';
 import renderWithRouter from '../renderWithRouter';
+import App from '../App';
 
 describe('Verifica o componente Pokedex', () => {
   test('Verifica se tem um h2 com o texto Encountered pokémons', () => {
-    renderWithRouter(
-      <Pokedex
-        pokemons={ pokemons }
-        isPokemonFavoriteById={ isPokemonFavoriteByIdType }
-      />,
-    );
+    renderWithRouter(<App />);
 
     const titlePokedex = screen.getByRole('heading', {
       name: /encountered pokémons/i, level: 2,
@@ -22,12 +15,7 @@ describe('Verifica o componente Pokedex', () => {
   });
 
   test('Verifica se ao clicar no botão próximo pokémon, exibe um outro pokémon', () => {
-    renderWithRouter(
-      <Pokedex
-        pokemons={ pokemons }
-        isPokemonFavoriteById={ isPokemonFavoriteByIdType }
-      />,
-    );
+    renderWithRouter(<App />);
 
     const buttonNext = screen.getByRole('button', { name: /Próximo pokémon/i });
     const textPik = screen.getByText(/pikachu/i);
@@ -91,12 +79,7 @@ describe('Verifica o componente Pokedex', () => {
   });
 
   test('Verifica se os buttons de filtro tem o nome correto', () => {
-    renderWithRouter(
-      <Pokedex
-        pokemons={ pokemons }
-        isPokemonFavoriteById={ isPokemonFavoriteByIdType }
-      />,
-    );
+    renderWithRouter(<App />);
 
     const buttonFilter = screen.getAllByTestId('pokemon-type-button');
 
@@ -110,12 +93,7 @@ describe('Verifica o componente Pokedex', () => {
   });
 
   test('Verifica se é possível clicar o button all', () => {
-    renderWithRouter(
-      <Pokedex
-        pokemons={ pokemons }
-        isPokemonFavoriteById={ isPokemonFavoriteByIdType }
-      />,
-    );
+    renderWithRouter(<App />);
 
     const btnAll = screen.getByRole('button', { name: /all/i });
 

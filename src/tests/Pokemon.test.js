@@ -13,11 +13,10 @@ describe('Verifica o componente Pokemon', () => {
     expect(cardName).toBeInTheDocument();
 
     const cardType = screen.getAllByText(/electric/i);
-    expect(cardType[0]).toBeInTheDocument();
+    expect(cardType[1]).toBeInTheDocument();
 
     const cardAverage = screen.getByText(/Average weight: 6.0 kg/i);
     expect(cardAverage).toBeInTheDocument();
-
     const cardImage = screen.getByRole('img', { name: /pikachu sprite/i });
 
     expect(cardImage).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
